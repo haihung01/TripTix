@@ -123,7 +123,7 @@ const List = () => {
 
     return isDeaprtureMatch && isDestinationMatch;
   });
-
+  console.log("data123", filteredRows)
   return (
     <div>
       <Box sx={{ pb: "20px" }}>
@@ -181,9 +181,9 @@ const List = () => {
               <TableCell className="tableTitle" sx={{ color: "#443A3E" }}>
                 Điểm Kết Thúc
               </TableCell>
-              <TableCell className="tableTitle" sx={{ color: "#443A3E" }}>
+              {/* <TableCell className="tableTitle" sx={{ color: "#443A3E" }}>
                 Giá / 1 vé
-              </TableCell>
+              </TableCell> */}
               <TableCell className="tableTitle" sx={{ color: "#443A3E" }}>
                 <TableSortLabel
                   active={orderBy === "status"}
@@ -206,12 +206,12 @@ const List = () => {
                   <TableRow key={row.idTrip}>
                     <TableCell className="tableCell">{row.idTrip}</TableCell>
                     <TableCell className="tableCell">
-                      {moment(row.startTimee * 1000).format(
+                      {moment(row.departureDateLT * 1000).format(
                         "DD/MM/YYYY hh:mm A"
                       )}
                     </TableCell>
                     <TableCell className="tableCell">
-                      {moment(row.endTimee * 1000).format(
+                      {moment(row.endDateLT * 1000).format(
                         "DD/MM/YYYY hh:mm A"
                       )}
                     </TableCell>
@@ -221,18 +221,18 @@ const List = () => {
                     <TableCell className="tableCell">
                       {row.route.destination}
                     </TableCell>
-                    <TableCell className="tableCell">
+                    {/* <TableCell className="tableCell">
                       {formatMoney(row?.fare)}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell className="tableCell">
                       <span className={`tripStatus ${row.status}`}>
                         {row.status === "RUN"
                           ? "ĐANG ĐI"
                           : row.status === "READY"
                             ? "CHUẨN BỊ"
-                            : row.status === "FINISH"
+                            : row.status === "FINISHED"
                               ? "ĐÃ HOÀN THÀNH"
-                              : row.status === "CANCEL"
+                              : row.status === "CANCELED"
                                 ? "ĐÃ HỦY"
                                 : row.status}
                       </span>
@@ -240,7 +240,7 @@ const List = () => {
                     <TableCell className="tableCell">
                       <Rating
                         name={`rating-${row.tripID}`}
-                        value={row.averageStar}
+                        value={row.avarageStar}
                         precision={0.2}
                         readOnly
                       />
@@ -270,9 +270,9 @@ const List = () => {
                   <TableCell align="center">
                     <Skeleton variant="rectangular" />
                   </TableCell>
-                  <TableCell align="center">
+                  {/* <TableCell align="center">
                     <Skeleton variant="rectangular" />
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
           </TableBody>

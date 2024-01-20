@@ -178,34 +178,34 @@ export default function TripDetail() {
                     padding: "5px",
                     borderRadius: "5px",
                     color:
-                      dataTrip?.status === "RUN"
+                      dataTrip?.status === "RUNNING"
                         ? "#6499e9"
                         : dataTrip?.status === "READY"
                           ? "goldenrod"
-                          : dataTrip?.status === "FINISH"
+                          : dataTrip?.status === "FINISHED"
                             ? "green"
-                            : dataTrip?.status === "CANCEL"
+                            : dataTrip?.status === "CANCELED"
                               ? "red"
                               : "black",
                     backgroundColor:
-                      dataTrip?.status === "RUN"
+                      dataTrip?.status === "RUNNING"
                         ? "rgb(166, 246, 255)"
                         : dataTrip?.status === "READY"
                           ? "rgba(189, 189, 3, 0.103)"
-                          : dataTrip?.status === "FINISH"
+                          : dataTrip?.status === "FINISHED"
                             ? "rgba(0, 128, 0, 0.151)"
-                            : dataTrip?.status === "CANCEL"
+                            : dataTrip?.status === "CANCELED"
                               ? "rgb(253, 183, 183)"
                               : "white",
                   }}
                 >
                   {dataTrip?.status === "READY"
                     ? "CHUẨN BỊ"
-                    : dataTrip?.status === "RUN"
+                    : dataTrip?.status === "RUNNING"
                       ? "ĐANG ĐI"
-                      : dataTrip?.status === "CANCEL"
+                      : dataTrip?.status === "CANCELED"
                         ? "ĐÃ HỦY"
-                        : dataTrip?.status === "FINISH"
+                        : dataTrip?.status === "FINISHED"
                           ? "ĐÃ HOÀN THÀNH"
                           : dataTrip?.status}
                 </span>
@@ -498,7 +498,18 @@ export default function TripDetail() {
                     </TableCell>
                     <TableCell className="tableCell">
                       <span className={`status ${row.status}`}>
-                        {row.status}
+
+                        {row?.status === "READY"
+                          ? "CHUẨN BỊ"
+                          : row?.status === "NO_SHOW"
+                            ? "LỠ CHUYẾN"
+                            : row?.status === "RUNNING"
+                              ? "ĐANG ĐI"
+                              : row?.status === "CANCELED"
+                                ? "ĐÃ HỦY"
+                                : row?.status === "FINISHED"
+                                  ? "ĐÃ HOÀN THÀNH"
+                                  : row?.status}
                       </span>
                     </TableCell>
                     <TableCell className="tableCell">

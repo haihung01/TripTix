@@ -163,7 +163,7 @@ const TripFinishList = () => {
 
     return isStartPointMatch && isEndPointMatch;
   });
-
+  console.log("first", filteredRows)
   return (
     <div>
       <Box sx={{ pb: "20px" }}>
@@ -292,7 +292,7 @@ const TripFinishList = () => {
                   <TableCell className="tableCell">
                     <Rating
                       name={`rating-${row?.tripID}`}
-                      value={row?.averageStar}
+                      value={row?.avarageStar}
                       precision={0.2}
                       readOnly
                     />
